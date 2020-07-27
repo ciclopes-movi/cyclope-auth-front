@@ -15,6 +15,66 @@
 					}
 				}
 			}
+		},
+		"AdminQueries": {
+			"service": "API Gateway",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "auth",
+					"resourceName": "cyclopeauth",
+					"attributes": [
+						"UserPoolId"
+					]
+				},
+				{
+					"category": "function",
+					"resourceName": "AdminQueriesbfa5efc7",
+					"attributes": [
+						"Arn",
+						"Name"
+					]
+				}
+			]
+		}
+	},
+	"auth": {
+		"userPoolGroups": {
+			"service": "Cognito-UserPool-Groups",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "auth",
+					"resourceName": "cyclopeauth",
+					"attributes": [
+						"UserPoolId",
+						"AppClientIDWeb",
+						"AppClientID",
+						"IdentityPoolId"
+					]
+				}
+			]
+		},
+		"cyclopeauth": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": []
+		}
+	},
+	"function": {
+		"AdminQueriesbfa5efc7": {
+			"service": "Lambda",
+			"providerPlugin": "awscloudformation",
+			"build": true,
+			"dependsOn": [
+				{
+					"category": "auth",
+					"resourceName": "cyclopeauth",
+					"attributes": [
+						"UserPoolId"
+					]
+				}
+			]
 		}
 	}
 }

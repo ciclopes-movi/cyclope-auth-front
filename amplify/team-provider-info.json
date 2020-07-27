@@ -10,6 +10,13 @@
             "StackName": "amplify-cyclopeauthfront-dev-121901",
             "StackId": "arn:aws:cloudformation:us-east-1:727235008306:stack/amplify-cyclopeauthfront-dev-121901/2db59410-c076-11ea-b9f8-0e2470ba0d5b",
             "AmplifyAppId": "dgyk2f81zk8ez"
+        },
+        "categories": {
+            "auth": {
+                "cyclopeauth": {
+                    "hostedUIProviderCreds": "[]"
+                }
+            }
         }
     }
 }
