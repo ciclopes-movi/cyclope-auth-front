@@ -16,6 +16,12 @@
                 "cyclopeauth": {
                     "hostedUIProviderCreds": "[]"
                 }
+            },
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "dgyk2f81zk8ez",
+                    "type": "manual"
+                }
             }
         }
     }
