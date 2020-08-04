@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 
-import awsExports from "./aws-exports";
-import Amplify, { API, graphqlOperation } from 'aws-amplify';
+import awsExports from './aws-exports';
+import Amplify, { API, graphqlOperation, I18n } from 'aws-amplify';
 
 import { createTodo } from './graphql/mutations'
 import { listTodos } from './graphql/queries'
-import { withAuthenticator } from '@aws-amplify/ui-react';
+import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
+import { Translations } from '@aws-amplify/ui-components';
 
 const initialState = {name: '', description: ''}
 
 Amplify.configure(awsExports);
+
+I18n.putVocabulariesForLanguage("en-US", {
+  [Translations.SIGN_IN_HEADER_TEXT]: 'Sign in to your Cyclopes account',
+  [Translations.USERNAME_LABEL]: 'Email *'
+});
 
 const App = () => {
 
@@ -46,6 +52,9 @@ const App = () => {
 
   return (
     <div style={styles.container}>
+      <div>
+        <AmplifySignOut />
+      </div>
       <h2>Amplify Todos</h2>
       <input
         onChange={event => setInput('name', event.target.value)}
